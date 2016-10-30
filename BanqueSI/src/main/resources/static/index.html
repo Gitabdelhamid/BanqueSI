@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Banque</title>
+<link rel="stylesheet" type="text/css" href="bootstrap-3.1.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script type="text/javascript" src="angular/angular.min.js"></script>
+<script src="angular/angular-messages.js"></script>
+<script type="text/javascript" src="js/MyApp.js"></script>
+</head>
+<body ng-app="MyBanque" ng-init="initL()" ng-controller="BanqueController" >
+<div class="row" align="center"><label >Code Employé : {{codeEmploye}}</label></div>
+
+<section class="row">
+<div class="container spacer">
+
+<form name="formVesement">
+	<label>Compte:</label>
+	<input type="text" ng-model="codeCompte" name="codeCompte" required >
+	<!-- <div ng-messages="formVesement.codeCompte.$error" role="alert">
+    <div ng-message="required">Please enter a value for this field.</div>
+  </div> -->
+	
+	<label>Montant a verser ou a retirer :</label>
+	<input type="text" ng-model="montant"> 
+<button ng-click="verser()">Verser</button>
+<button ng-click="retirer()">Retirer</button>
+<div class="row">{{messages}}</div>
+</form>
+</div>
+</section>
+
+<section>
+					<div>
+					<label>Listes des Client </label>
+					
+												<div class="container spacer">
+												<button ng-click="AllClient()">listeClient</button>
+							<table class="table table-striped" >
+							<thead>
+							<tr>
+							<th>Code Client</th><th>Nom Client</th><th>Adresse</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="c in clients">
+							<td>{{c.codCli}}</td>
+							<td>{{c.nomCli}}</td>
+							<td>{{c.adressCli}}</td>
+							</tr>
+							</tbody>
+							</table>
+</div>
+					
+					
+					
+					
+				</div>
+
+</section>
+<section>
+					<div>
+					<label>liste Emp </label>
+					
+												<div class="container spacer"><!-- 
+												<button ng-click="AllEmployee()">liste Emp</button> -->
+							<table class="table table-striped" >
+							<thead>
+							<tr>
+							<th>Code Employer</th><th>Nom Employer</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="e in employes">
+							<td>{{e.codeEmploye}}</td>
+							<td>{{e.nomEmploye}}</td>
+							</tr>
+							</tbody>
+							</table>
+</div>
+					
+					
+					
+					
+				</div>
+
+</section>
+<section>
+
+
+
+    <div ng-controller="BillCtrl">
+        <ul>
+            <li ng-repeat="article in articles">
+                <label>{{article.name}}:</label>
+                <input ng-model="article.price"/>
+                <input type="number" ng-model="article.quantity"/>                
+            </li>
+        </ul>
+        <div>
+            <label>Total facture: </label><span>{{total() | currency:"€":2}}</span>            
+        </div>
+        <div>
+             <label>Réduction: </label><span>{{discount | currency: "€":2}}</span>
+        </div>
+        <div>
+            <label>Somme à payer: </label><span>{{finalTotal() | currency: "€":2}}</span>        
+        </div
+    </div>
+
+
+
+
+
+</section>
+
+
+
+</body>
+</html>

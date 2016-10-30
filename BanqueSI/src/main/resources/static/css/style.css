@@ -1,0 +1,13 @@
+.spacer{
+margin-top: 30px;
+}
+.clickable{
+cursor: pointer;
+}
+input{
+    max-width:70px
+}
+
+li{
+    margin-bottom: 14px;
+}
